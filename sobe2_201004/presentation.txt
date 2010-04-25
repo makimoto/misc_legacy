@@ -1,0 +1,115 @@
+ms_sudo について
+
+Shimpei Makimoto
+co-founder, Tsuyabu
+----
+kasahi さん、mirakui さん、
+お疲れさまでした。
+----
+まあ、
+それはそれとして。
+----
+今日は ms_sudo というのを作ったので
+そのご紹介をします。
+----
+ms とはなんぞ
+----
+ms != Microsoft
+----
+ms = More Spiritural
+----
+参考文献
+スピリチュアルエンジニアリング入門 - 床のトルストイ、ゲイとするとのこと
+http://d.hatena.ne.jp/mirakui/20100301/1267464280
+----
+要約
+- スピリチュアル、大事
+- 仏滅、やばい
+- サーバさんありがとう
+----
+ms_sudo とは
+----
+ms_sudo - sudo(8) command wrapper for more spiritual engineering
+ms_sudo - よりスピリチュアルなエンジニアリングのための sudo(8) コマンドラッパー
+----
+取り敢えずソースコードを見ましょう
+----
+#!/bin/sh
+# ms_sudo - more spiritural sudo
+
+DATE=`date "+%Y,%m,%d"`
+ROKUYO=`perl -e "require 'qreki.pl';print &qreki::get_rokuyou($DATE)"`
+if [ $ROKUYO -eq 5 ];then
+  echo "Warning: It's Butsumetsu!"
+  while [ 1 ]; do
+    echo "Warning: Type 'ありがとう' to the Server by your own hands."
+    read STR
+    if [ $STR = "ありがとう" ];then
+      echo $STR > /dev/null
+      break
+    else
+      echo "Bad Input! Try again."
+    fi
+  done
+fi
+
+/usr/bin/sudo.orig $@
+----
+デモ
+(時間があったら)
+----
+今日の六曜言えるかな。
+----
+答 → http://roku-you.com/
+----
+ということで友引です。
+なので、ふつうだとふつうに sudo が通るんですがこうします。
+----
+#!/bin/sh
+# ms_sudo - more spiritural sudo
+
+DATE=`date "+%Y,%m,%d"`
+ROKUYO=`perl -e "require 'qreki.pl';print &qreki::get_rokuyou($DATE)"`
+if [ $ROKUYO -eq 3 ];then
+  echo "Warning: It's Tomobiki!"
+  while [ 1 ]; do
+    echo "Warning: Type 'ありがとう' to the Server by your own hands."
+    read STR
+    if [ $STR = "ありがとう" ];then
+      echo $STR > /dev/null
+      break
+    else
+      echo "Bad Input! Try again."
+    fi
+  done
+fi
+
+/usr/bin/sudo.orig $@
+----
+まとめ
+- ms_sudo というのを作ったよ。
+- ありがとうの気持ちがとてもだいじ
+----
+Future Work
+- より安全に
+-- 先勝の時の夕方や正午周辺以外の赤口でも警告を出す
+- 水平展開
+-- 六曜表示付き date コマンドなど
+----
+おまけ
+----
+第十回文学フリーマーケット
+時   2010年5月23日 (日)
+場所 大田区産業プラザPiO
+
+つヤ部報 vol.3
+S-01 つヤ部
+----
+特集
+さよなら六本木
+----
+なんかみらくいのインタビューとかつゆぐちさん (奥さんの方) の記事とかが載ってるらしいですよ。
+----
+(*) 内容は都合により予告なしに変更される場合があります。
+----
+よろしくおねがいします。

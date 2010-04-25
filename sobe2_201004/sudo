@@ -1,0 +1,21 @@
+#!/bin/sh
+# ms_sudo - more spiritural sudo
+# for sobe2 presentation
+
+DATE=`date "+%Y,%m,%d"`
+ROKUYO=`perl -e "require 'qreki.pl';print &qreki::get_rokuyou($DATE)"`
+if [ $ROKUYO -eq 3 ];then
+  echo "Warning: It's Tomobiki!"
+  while [ 1 ]; do
+    echo "Warning: Type 'ありがとう' to the Server by your own hands."
+    read STR
+    if [ $STR = "ありがとう" ];then
+      echo $STR > /dev/null
+      break
+    else
+      echo "Bad Input! Try again."
+    fi
+  done
+fi
+
+/usr/bin/sudo $@
